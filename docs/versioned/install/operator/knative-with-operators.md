@@ -61,6 +61,12 @@ To see available values, run:
 helm show values -n knative-operator knative-operator/knative-operator
 ```
 
+!!! note
+    To deploy Knative components to remote clusters from this Operator,
+    enable multi-cluster support through the `knative_operator.multicluster.*`
+    Helm values. For prerequisites and configuration details, see
+    [Deploy Knative to a remote cluster](multi-cluster-deployment.md).
+
 ### Verify your Knative Operator installation
 
 1. Because the Operator is installed to the `knative-operator` namespace, ensure you set the current namespace to `default` by running the command:
@@ -753,7 +759,7 @@ The following table describes the supported versions of Serving and Eventing for
 
 | Operator | Serving                                                                                                                                                                   | Eventing                                                                                                                                                                  |
 |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| v1.21    | v1.21.0<br/>v1.20.0, v1.20.1 and v1.20.2<br/>v1.19.0, v1.19.1, v1.19.2, v1.19.3, v1.19.4, v1.19.5, v1.19.6, v1.19.7, v1.19.8 and v1.19.9<br/>v1.18.0, v1.18.1 and v1.18.2 | v1.21.0<br/>v1.20.0 and v1.20.1<br/>v1.19.0, v1.19.1, v1.19.2, v1.19.3, v1.19.4, v1.19.5, v1.19.6, v1.19.7 and v1.19.8<br/>v1.18.0, v1.18.1, v1.18.2, v1.18.3 and v1.18.4 |
+| v1.23  | v1.23.0<br/>v1.22.0 and v1.22.1<br/>v1.21.0, v1.21.1, v1.21.2 and v1.21.3<br/>v1.20.0, v1.20.1, v1.20.2 and v1.20.3 | v1.23.0<br/>v1.22.0, v1.22.1 and v1.22.2<br/>v1.21.0, v1.21.1, v1.21.2, v1.21.3 and v1.21.4<br/>v1.20.0, v1.20.1, v1.20.2 and v1.20.3 |
 
 ## What's next
 

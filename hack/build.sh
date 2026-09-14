@@ -27,7 +27,7 @@ set -x
 # 1) Make a release-NN branch as normal.
 # 2) Update VERSIONS below (on main) to include the new version, and remove the oldest
 #    Order matters :-), Most recent first.
-VERSIONS=("1.21" "1.20" "1.19") # Docs version, results in the url e.g. knative.dev/docs-1.9/..
+VERSIONS=("1.23" "1.22" "1.21") # Docs version, results in the url e.g. knative.dev/docs-1.9/..
 # 4) PR the result to main.
 # 5) Party.
 
@@ -75,8 +75,8 @@ curl -f -L --show-error https://raw.githubusercontent.com/knative/eventing/main/
 echo -e "\nsamples_branch: main\nversion: development\ndoc_base: /docs/versioned/" >> "$TEMP/content/docs/versioned/.meta.yml"
 versionjson="{\"version\": \"versioned\", \"title\": \"(Pre-release)\", \"aliases\": [\"\"]}"
 
-# Temporarily force BUILD_VERSIONS (for previews), while this rewrite is testing.
-BUILD_VERSIONS="yes"
+# Build all versions by default, but allow deploy previews to opt out.
+: "${BUILD_VERSIONS:=yes}"
 
 if [ "$BUILD_VERSIONS" != "no" ]; then
   mv $TEMP/content/docs/versioned $TEMP/content/docs/development
@@ -96,7 +96,7 @@ if [ "$BUILD_VERSIONS" != "no" ]; then
     echo -e "\ndoc_base: /docs/versioned/" >> "$TEMP/content/docs/docs/.meta.yml"
     # Fix up redirects from old versioned/ path to docs/ and append them to redirects.
     # We only do this for development (so we can see effects) and docs (current)
-    grep '^    ' "$TEMP/current-release/config/redirects.yml" | ${SED_CMD} 's| versioned/| docs/|g' >> "$TEMP/content/config/redirects.yml"
+    grep '^    ' "$TEMP/current-release/config/redirects.yml" | ${SED_CMD} -e 's| versioned/| docs/|g' -e 's| community/contributing/README.md$| community/contributing.md|' >> "$TEMP/content/config/redirects.yml"
   else
     cp -r "$TEMP/current-release/docs" "$TEMP/content/docs/docs"
     echo -e "\ndoc_base: /docs/" >> "$TEMP/content/docs/docs/.meta.yml"

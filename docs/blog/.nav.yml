@@ -5,6 +5,8 @@ nav:
     - Blog:
       - index.md
       - Releases:
+          - releases/announcing-knative-v1-23-release.md
+          - releases/announcing-knative-v1-22-release.md
           - releases/announcing-knative-v1-21-release.md
           - releases/announcing-knative-v1-20-release.md
           - releases/announcing-knative-v1-19-release.md
@@ -44,6 +46,8 @@ nav:
           - releases/announcing-knative-v0-3-release.md
           - releases/announcing-knative-v0-2-release.md
       - Articles:
+          - articles/deploying-knative-to-remote-clusters-with-operator.md
+          - articles/gateway-api-ingress-with-knative-operator.md
           - articles/Enhancing-func-cli-ux.md
           - articles/knative-eventing-eda-agents.md
           - articles/kubevirt_meets_eventing.md
@@ -118,4 +122,3 @@ nav:
           - events/install-fest-04-2022.md
           - events/knative-at-kubecon-eu-2019.md
           - events/knative-at-kubecon-seattle.md
-
